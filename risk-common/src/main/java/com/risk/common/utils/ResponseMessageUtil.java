@@ -11,35 +11,35 @@ public class ResponseMessageUtil {
 
     private ResponseMessage responseMessage = new ResponseMessage();
 
-    public void setResponseMessage(String zhuangTaiMa, String tiShiXinXi, String xiangYingShiJian, Object xiangYingShuJu) {
-        responseMessage.setZhuangTaiMa(zhuangTaiMa);
-        responseMessage.setTiShiXinXi(tiShiXinXi);
-        responseMessage.setXiangYingShiJian(xiangYingShiJian);
-        responseMessage.setXiangYingShuJu(xiangYingShuJu);
+    public void setResponseMessage(String code, String text, String response_time, Object data) {
+        responseMessage.setCode(code);
+        responseMessage.setText(text);
+        responseMessage.setResponse_time(response_time);
+        responseMessage.setData(data);
     }
 
-    public void setResponseMessage(String zhuangTaiMa, String tiShiXinXi, String xiangYingShuJu) {
-        this.setResponseMessage(zhuangTaiMa, tiShiXinXi, DateTimeHelper.getCurrentDateTime(), xiangYingShuJu);
+    public void setResponseMessage(String code, String text, String data) {
+        this.setResponseMessage(code, text, DateTimeHelper.getCurrentDateTime(), data);
     }
 
 
-    public void setResponseMessage(String zhuangTaiMa, String tiShiXinXi, Object xiangYingShuJu) {
-        this.setResponseMessage(zhuangTaiMa, tiShiXinXi, DateTimeHelper.getCurrentDateTime(), xiangYingShuJu);
+    public void setResponseMessage(String code, String text, Object data) {
+        this.setResponseMessage(code, text, DateTimeHelper.getCurrentDateTime(), data);
     }
 
     public String getResponseMessage() {
         return JSON.toJSONString(responseMessage);
     }
 
-    public void setResponseMessage(String zhuangTaiMa) {
-        String tiShiXinXi = "";
-        String xiangYingShuJu = "";
-        if (null != zhuangTaiMa && zhuangTaiMa.equals(IConstant.Status.CANSHU_CUOWU.getZhuangTaiMa())) {
-            tiShiXinXi = IConstant.Status.CANSHU_CUOWU.getHanYi();
+    public void setResponseMessage(String code) {
+        String text = "";
+        String data = "";
+        if (null != code && code.equals(IConstant.Status.PARA_ERROR.getCode())) {
+            text = IConstant.Status.PARA_ERROR.getText();
         }
-        if (null != zhuangTaiMa && zhuangTaiMa.equals(IConstant.Status.HOUTAI_YICHANG.getZhuangTaiMa())) {
-            tiShiXinXi = IConstant.Status.HOUTAI_YICHANG.getHanYi();
+        if (null != code && code.equals(IConstant.Status.EXCEPTION.getCode())) {
+            text = IConstant.Status.EXCEPTION.getText();
         }
-        this.setResponseMessage(zhuangTaiMa, tiShiXinXi, DateTimeHelper.getCurrentDateTime(), xiangYingShuJu);
+        this.setResponseMessage(code, text, DateTimeHelper.getCurrentDateTime(), data);
     }
 }

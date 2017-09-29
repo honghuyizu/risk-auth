@@ -33,10 +33,9 @@ public class UserServiceImpl  implements UserService{
     public Response addUser(BaseUser user) {
         Response.Status st = null;
         ResponseMessageUtil responseMessageUtil = new ResponseMessageUtil();
-        UserDto userDto = userService.getUser("洪湖");
         addUserInfo(user);
-        responseMessageUtil.setResponseMessage(IConstant.Status.HOUTAI_YICHANG.getZhuangTaiMa(), IConstant.Status.HOUTAI_YICHANG.getHanYi(), "");
-        st = IConstant.Status.HOUTAI_YICHANG.getHttpStatus();
+        responseMessageUtil.setResponseMessage(IConstant.Status.EXCEPTION.getCode(), IConstant.Status.EXCEPTION.getText(), "");
+        st = IConstant.Status.EXCEPTION.getHttpStatus();
         String result = responseMessageUtil.getResponseMessage();
         logger.info(result);
         logger.info("------注册接口结束------");
@@ -74,8 +73,8 @@ public class UserServiceImpl  implements UserService{
         user = baseUserDao.getByName(name);
         String userStr = JsonUtil.toJson(user);
         logger.info("userStr:::"+userStr);
-        responseMessageUtil.setResponseMessage(IConstant.Status.CHAXUN_CHENGGONG.getZhuangTaiMa(), IConstant.Status.CHAXUN_CHENGGONG.getHanYi(), user);
-        st = IConstant.Status.CHAXUN_CHENGGONG.getHttpStatus();
+        responseMessageUtil.setResponseMessage(IConstant.Status.SUCCESS.getCode(), IConstant.Status.SUCCESS.getText(), user);
+        st = IConstant.Status.SUCCESS.getHttpStatus();
         String result = responseMessageUtil.getResponseMessage();
         logger.info(result);
         return Response.status(st).entity(result).build();

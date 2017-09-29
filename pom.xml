@@ -317,11 +317,11 @@
     <module>risk-consumer</module>
   </modules>
   <!-- More Project Information -->
-  <name>risk_auth</name>
-  <description>risk_auth</description>
+  <name>risk-auth</name>
+  <description>risk-auth</description>
   <organization>
     <name>risk</name>
-    <url>http://www.bsito.com</url>
+    <url>http://www.jhs360.com</url>
   </organization>
   <developers>
     <developer>

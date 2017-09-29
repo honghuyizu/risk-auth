@@ -1,5 +1,7 @@
 package com.risk.common.utils;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -7,64 +9,34 @@ import java.io.Serializable;
  * <p>使用MQ记录日志信息</p>
  *
  */
+@Data
 public class ResponseMessage implements Serializable {
 
     /**
      * 状态码
      */
-    private String zhuangTaiMa;
+    private String code;
     /**
      * 提示信息
      */
-    private String tiShiXinXi;
+    private String text;
     /**
      * 后台响应时间
      */
-    private String xiangYingShiJian;
+    private String response_time;
     /**
      * 后台响应数据
      */
-    private Object xiangYingShuJu;
+    private Object data;
 
     public ResponseMessage() {
     }
 
-    public ResponseMessage(String zhuangTaiMa, String tiShiXinXi, String xiangYingShiJian, Object xiangYingShuJu) {
-        this.zhuangTaiMa = zhuangTaiMa;
-        this.tiShiXinXi = tiShiXinXi;
-        this.xiangYingShiJian = xiangYingShiJian;
-        this.xiangYingShuJu = xiangYingShuJu;
+    public ResponseMessage(String code, String text, String response_time, Object data) {
+        this.code = code;
+        this.text = text;
+        this.response_time = response_time;
+        this.data = data;
     }
 
-    public String getZhuangTaiMa() {
-        return zhuangTaiMa;
-    }
-
-    public void setZhuangTaiMa(String zhuangTaiMa) {
-        this.zhuangTaiMa = zhuangTaiMa;
-    }
-
-    public String getTiShiXinXi() {
-        return tiShiXinXi;
-    }
-
-    public void setTiShiXinXi(String tiShiXinXi) {
-        this.tiShiXinXi = tiShiXinXi;
-    }
-
-    public String getXiangYingShiJian() {
-        return xiangYingShiJian;
-    }
-
-    public void setXiangYingShiJian(String xiangYingShiJian) {
-        this.xiangYingShiJian = xiangYingShiJian;
-    }
-
-    public Object getXiangYingShuJu() {
-        return xiangYingShuJu;
-    }
-
-    public void setXiangYingShuJu(Object xiangYingShuJu) {
-        this.xiangYingShuJu = xiangYingShuJu;
-    }
 }

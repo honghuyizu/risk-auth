@@ -23,8 +23,8 @@ public class AwardServiceImpl implements AwardService {
         javax.ws.rs.core.Response.Status st = null;
         ResponseMessageUtil responseMessageUtil = new ResponseMessageUtil();
         UserDto user = userService.getUser(name);
-        responseMessageUtil.setResponseMessage(IConstant.Status.CHAXUN_CHENGGONG.getZhuangTaiMa(), IConstant.Status.CHAXUN_CHENGGONG.getHanYi(), user);
-        st = IConstant.Status.CHAXUN_CHENGGONG.getHttpStatus();
+        responseMessageUtil.setResponseMessage(IConstant.Status.SUCCESS.getCode(), IConstant.Status.SUCCESS.getText(), user);
+        st = IConstant.Status.SUCCESS.getHttpStatus();
         String result = responseMessageUtil.getResponseMessage();
         return Response.status(st).entity(result).build();
     }
