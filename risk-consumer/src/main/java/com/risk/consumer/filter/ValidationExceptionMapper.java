@@ -24,11 +24,11 @@ public class ValidationExceptionMapper extends RpcExceptionMapper {
                     cv.getInvalidValue() == null ? "null" : cv.getInvalidValue().toString()));
         }
         try {
-            responseMessageUtil.setResponseMessage( IConstant.Status.CANSHU_CUOWU.getZhuangTaiMa(),
-                    IConstant.Status.CANSHU_CUOWU.getHanYi(), report);
+            responseMessageUtil.setResponseMessage( IConstant.Status.PARA_ERROR.getCode(),
+                    IConstant.Status.PARA_ERROR.getText(), report);
             status = Response.Status.BAD_REQUEST;
         } catch (Exception e) {
-            responseMessageUtil.setResponseMessage(IConstant.Status.HOUTAI_YICHANG.getZhuangTaiMa());
+            responseMessageUtil.setResponseMessage(IConstant.Status.EXCEPTION.getCode());
             status = Response.Status.INTERNAL_SERVER_ERROR;
         }
 
