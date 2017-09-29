@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- redis相关配置参数 -->
+<redis_config>
+    <!-- 主机：IP地址或者域名 -->
+    <host>127.0.0.1</host>
+    <!-- 端口 -->
+    <port>6379</port>
+    <!-- 访问密码 -->
+    <password></password>
+    <!-- Redis连接池，最大连接数 -->
+    <max_total>1024</max_total>
+    <!-- Redis连接池，最大空闲连接数 -->
+    <max_idle>200</max_idle>
+    <!-- Redis连接池，最小空闲连接数 -->
+    <min_idle>10</min_idle>
+    <!-- Redis连接池，从连接池中取连接前是否进行有效性检查（运行validationQuery） -->
+    <test_on_borrow>true</test_on_borrow>
+    <!-- Redis连接池，默认的连接超时时间（ms） -->
+    <timeout>10000</timeout>
+    <!-- 缓存中键的前缀：同构的多套系统共用一个redis服务时，用于区分相同功能的键 -->
+    <key_prefix>jhs360_001</key_prefix>
+</redis_config>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.risk.api.dao.BaseUserDao">
+	<resultMap id="baseUserMap" type="com.risk.api.entity.BaseUser"/>
+
+
+	<sql id="baseUserColumns">
+		 id                  as  id               ,
+		 name                as  name              ,
+		 first_name          as  firstName         ,
+		 last_name           as  lastName          ,
+		 nickname            as  nickname          ,
+		 account             as  account           ,
+		 password            as  password          ,
+		 card_name           as  cardName          ,
+		 card_number         as  cardNumber        ,
+		 sex                 as  sex               ,
+		 birthday            as  birthday          ,
+		 mobile              as  mobile            ,
+		 phone               as  phone             ,
+		 qq                  as  qq                ,
+		 email               as  email             ,
+		 duty                as  duty              ,
+		 address             as  address           ,
+		 zipcode             as  zipcode           ,
+		 avatar_path_name    as  avatarPathName    ,
+		 status              as  status            ,
+		 role_ids            as  roleIds           ,
+		 remark              as  remark           ,
+		 end_dt              as  endDt            ,
+		 create_dt           as  createDt         ,
+		 last_update_user_id as  lastUpdateUserId ,
+		 last_update_dt      as  lastUpdateDt     ,
+		 delete_flag         as  deleteFlag
+	</sql>
+
+	<sql id="baseUserJoins">
+
+	</sql>
+
+	<select id="get" resultType="com.risk.api.entity.BaseUser">
+		SELECT
+		<include refid="baseUserColumns" />
+		FROM base_user a
+		WHERE a.id = #{id}
+	</select>
+
+	<select id="getByName" resultType="com.risk.api.entity.BaseUser">
+		SELECT
+		<include refid="baseUserColumns" />
+		FROM base_user a
+		WHERE a.name = #{name}
+	</select>
+
+	<select id="findList" resultType="com.risk.api.entity.BaseUser">
+		SELECT
+		<include refid="baseUserColumns" />
+		FROM base_user a
+		<where>
+
+			<if test="name != null and name != ''">
+				AND a.name = #{name}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="findAllList" resultType="com.risk.api.entity.BaseUser">
+		SELECT
+		<include refid="baseUserColumns" />
+		FROM base_user a
+		<where>
+
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT
+		INTO base_user(
+		name                ,
+		first_name          ,
+		last_name           ,
+		nickname            ,
+		account             ,
+		password            ,
+		card_name           ,
+		card_number         ,
+		sex                 ,
+		birthday            ,
+		mobile              ,
+		phone               ,
+		qq                  ,
+		email               ,
+		duty                ,
+		address             ,
+		zipcode             ,
+		avatar_path_name    ,
+		status              ,
+		role_ids            ,
+		remark              ,
+		end_dt              ,
+		create_dt           ,
+		last_update_user_id ,
+		last_update_dt      ,
+		delete_flag
+		) VALUES (
+		#{name},
+		#{firstName},
+		#{lastName},
+		#{nickname},
+		#{account},
+		#{password},
+		#{cardName},
+		#{cardNumber},
+		#{sex},
+		#{birthday},
+		#{mobile},
+		#{phone},
+		#{qq},
+		#{email},
+		#{duty},
+		#{address},
+		#{zipcode},
+		#{avatarPathName},
+		#{status},
+		#{roleIds},
+		#{remark},
+		#{endDt},
+		#{createDt},
+		#{lastUpdateUserId},
+		#{lastUpdateDt},
+		#{deleteFlag}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE base_user SET
+		 name =#{name},
+		 first_names =#{firstName},
+		 last_name =#{lastName},
+		 nickname =#{nickname},
+		 account =#{account},
+		 password =#{password},
+		 card_name =#{cardName},
+		 card_number =#{cardNumber},
+		 sex =#{sex},
+		 birthday =#{birthday},
+		 mobile =#{mobile},
+		 phone =#{phone},
+		 qq =#{qq},
+		 email =#{email},
+		 duty =#{duty},
+		 address =#{address},
+		 zipcode =#{zipcode},
+		 avatar_path_name =#{avatarPathName},
+		 status =#{status},
+		 role_ids =#{roleIds},
+		 remark =#{remark},
+		 end_dt =#{endDt},
+		 create_dt =#{createDt},
+		 last_update_user_id =#{lastUpdateUserId},
+		 last_update_dt =#{lastUpdateDt},
+		 delete_flag =#{deleteFlag}
+		WHERE id = #{id}
+	</update>
+
+	<update id="delete">
+		DELETE FROM base_user
+		WHERE id = #{id}
+	</update>
+
+
+</mapper>

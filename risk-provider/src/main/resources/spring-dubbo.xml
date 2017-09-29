@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="risk-provider" owner="lzb" organization="risk"/>
+
+    <dubbo:registry address="zookeeper://120.76.241.15:2181"/>
+
+    <!--<dubbo:monitor protocol="registry"/>-->
+
+    <dubbo:protocol name="dubbo" serialization="kryo"/>
+
+    <!-- use the external tomcat or other server with the servlet approach; the port and contextpath must be exactly the same as those in external server -->
+    <dubbo:protocol name="rest" port="8086" contextpath="/" server="servlet"
+                    extension="com.risk.api.filter.ValidationExceptionMapper"  />
+
+    <dubbo:service interface="com.risk.provider.service.UserService" ref="userServiceImpl" protocol="dubbo"/>
+
+    <bean id="userServiceImpl" class="com.risk.provider.service.impl.UserServiceImpl"/>
+
+
+</beans>
