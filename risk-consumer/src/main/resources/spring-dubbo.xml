@@ -16,6 +16,9 @@
     <dubbo:protocol name="rest" port="8087" contextpath="/" server="servlet"
                     extension="com.risk.consumer.filter.ValidationExceptionMapper"  />
 
+    <!--关闭所有服务的启动时检查 (解决没有提供者时报错问题)-->
+    <dubbo:consumer check="false"/>
+
     <dubbo:reference id="userService" interface="com.risk.provider.service.UserService"/>
 
     <dubbo:service interface="com.risk.consumer.service.AwardService" ref="awardServiceImpl" protocol="rest"
