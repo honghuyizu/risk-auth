@@ -9,11 +9,11 @@
 
     <dubbo:registry address="zookeeper://120.76.241.15:2181"/>
 
-    <!--<dubbo:monitor protocol="registry"/>-->
+    <dubbo:monitor protocol="registry"/>
 
     <dubbo:protocol name="dubbo" serialization="kryo"/>
 
-    <dubbo:protocol name="rest" port="8087" contextpath="/" server="servlet"
+    <dubbo:protocol name="rest" port="7022" contextpath="/" server="servlet"
                     extension="com.risk.consumer.filter.ValidationExceptionMapper"  />
 
     <!--关闭所有服务的启动时检查 (解决没有提供者时报错问题)-->

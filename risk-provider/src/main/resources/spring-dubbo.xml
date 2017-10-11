@@ -9,12 +9,12 @@
 
     <dubbo:registry address="zookeeper://120.76.241.15:2181"/>
 
-    <!--<dubbo:monitor protocol="registry"/>-->
+    <dubbo:monitor protocol="registry"/>
 
     <dubbo:protocol name="dubbo" serialization="kryo"/>
 
     <!-- use the external tomcat or other server with the servlet approach; the port and contextpath must be exactly the same as those in external server -->
-    <dubbo:protocol name="rest" port="8086" contextpath="/" server="servlet"
+    <dubbo:protocol name="rest" port="7021" contextpath="/" server="servlet"
                     extension="com.risk.api.filter.ValidationExceptionMapper"  />
 
     <dubbo:service interface="com.risk.provider.service.UserService" ref="userServiceImpl" protocol="dubbo" owner="Lee"/>
